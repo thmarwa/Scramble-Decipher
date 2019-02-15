@@ -1,3 +1,23 @@
+/* @file: basic2.cpp
+ *
+ * This script allows finding all the english words in the file:
+ * @see brit-a-z.txt
+ * 
+ * Words are looked for in a 4x4 array of characters, provided a continuity 
+ * of the characters in one of the 8 boxes directly in contact with the character.
+ * 
+ * Input into the script the 4x4 characters,and it outputs all the matching words.
+ * @Example: For the 4x4 list of characters:
+ * 				A M A F
+ * 				B E A R
+ * 				T A P U
+ * 				G N I S
+ * 			 Input the string: amafbeartapugnqis
+ *
+ * By Thabet Marwa. Jan-2014.
+ * Modified: July-2017.
+ */
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -5,7 +25,6 @@
 #include <stack>
 #include <fstream>
 using namespace std;
-
 
 // Declare Class Point
 struct Point {
@@ -20,9 +39,8 @@ public:
 Point operator+(const Point& a,  const Point& b) {return Point(a.x+b.x, a.y+b.y); }
 Point operator-(const Point& a, const Point& b) {return Point(a.x-b.x, a.y-b.y); }
 
-
 // Declare Global Variables
-vector<string> englishwords(75000, ""); // List of All english words
+vector<string> englishwords(0, ""); // List of All english words
 vector<string> wordslist; // List of the Words that exist in the Table
 char Table2D[4][4];
 
@@ -52,21 +70,26 @@ int main(int argc, char const *argv[])
 		source >> word;
 		englishwords.push_back(word);
 	}
+	cout << "English words count: " << englishwords.size() << endl;
 
-	// Input the characters from the user
-	cout << "\nInput the set of characters that you want to be matched. \n";
-	cin >> word;
-	while (word.length() != 16) {
-		cout << "The word length is " << word.length() << ", but it should be 16. Please try again.\n";
+	if (argc > 1)
+	{
+		word = argv[1];
+	} else {
+		// Input the characters from the user
+		cout << "\nInput the set of characters that you want to be matched. \n";
 		cin >> word;
+		while (word.length() != 16) {
+			cout << "The word length is " << word.length() << ", but it should be 16. Please try again.\n";
+			cin >> word;
+		}
 	}
+	cout << "Using the character set " << word << "\n";
 
 	// Fill in the characters into the 2D Table
 	for (int i = 0; i < 4; i++) 
 		for (int j = 0; j < 4; j++) 
 			Table2D[i][j] = word[4*i+j];
-
-
 
 	int attemptcount = 0;
 	for (int i = 0 ; i < 4; i++) {
@@ -96,13 +119,11 @@ int main(int argc, char const *argv[])
 						queue<Point> q = seedword; // Copy the original list
 						q.push(mypoint); // Add to the new list the last character
 						mylist.push(q); // Add the last character to mylist
-
 					}
 				}
 			}
 		}
 	}
-
 
 	// Sort the wordslist in order of increasing size of string
 	queue<string> radixsort[10];
@@ -129,7 +150,6 @@ int main(int argc, char const *argv[])
 		}
 	}
 
-
 	cout << "Words List is: " << endl;
 	for (int i = 0; i < wordslist.size(); i++) {
 		cout << wordslist[i] << endl;
@@ -138,7 +158,6 @@ int main(int argc, char const *argv[])
 		"\nNumber of Attempts = " << attemptcount << endl;
 	cin.ignore();
 }
-
 
 // Checks if the given word is available in the dictionary. O(log(n))
 bool findWord(string word) {
@@ -178,10 +197,8 @@ bool findWordStart(string word) {
 		if (findWord(word)) wordslist.push_back(word);
 		return true;
 	}
-
 	return found;
 }
-
 
 bool findWordStart(queue<Point> a, Point trial) {
 	if (a.size() == 0) return true;
@@ -196,4 +213,6 @@ bool findWordStart(queue<Point> a, Point trial) {
 	return findWordStart(word);
 }
 
-bool inTable(Point a) {return (a.x > -1 && a.x < 4 && a.y > -1 && a.y < 4); }
+bool inTable(Point a) {
+	return (a.x > -1 && a.x < 4 && a.y > -1 && a.y < 4);
+}
