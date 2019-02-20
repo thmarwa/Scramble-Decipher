@@ -1,4 +1,4 @@
-/* @file: basic2.cpp
+/* @file: scramble_script.cpp
  *
  * This script allows finding all the english words in the file:
  * @see brit-a-z.txt
@@ -12,7 +12,7 @@
  * 				B E A R
  * 				T A P U
  * 				G N I S
- * 			 Input the string: amafbeartapugnqis
+ * 			 Input the string: amafbeartapugnis
  *
  * By Thabet Marwa. Jan-2014.
  * Modified: July-2017.
