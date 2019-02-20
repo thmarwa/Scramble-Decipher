@@ -13,12 +13,15 @@ T A P U
 G N I S
 ```
 
-By inputting the string "amafbeartapugnqis" (concatenating the above rows) into the program, it deciphers all the possible words:
+By inputting the string "amafbeartapugnis" (concatenating the above rows) into the program, it deciphers all the possible words:
 ```
 English words count: 79773
-Using the character set amafbeartapugnqis
+Using the character set amafbeartapugnis
 Words List is: 
+in
+is
 up
+us
 pa
 pi
 at
@@ -29,19 +32,27 @@ ma
 me
 am
 ab
-qua
+sup
+spa
+sin
+sip
+nip
 nag
 nab
 nap
 gat
 gab
 gap
+ups
+pin
+pus
 par
 pet
 pea
 pat
 pan
 ant
+ain
 ate
 tag
 tab
@@ -63,24 +74,40 @@ far
 met
 map
 mar
-quip
+surf
+spin
+spur
+spam
+spar
+spat
+span
+sing
+nips
 nape
+naps
 gnat
+gain
 gape
+gaps
 gate
+ping
+pint
 pram
 peat
 pear
 pang
 pant
+pain
 pate
 ante
-aqua
 tang
 tape
+taps
 tear
 team
+ruin
 rape
+raps
 aura
 bang
 bate
@@ -97,16 +124,30 @@ afar
 meat
 mean
 meta
+maps
 abet
+supra
+suing
+spear
+spate
+using
 paean
+paint
+ruing
+apian
+aping
+beaus
 frame
 meant
 abate
 abeam
+taping
+raping
 bateau
+pausing
 
-Word Count = 86
-Number of Attempts = 3536
+Word Count = 127
+Number of Attempts = 4720
 ```
 
 This script allows for getting high scores by finding very long words! Enjoy using the script.
